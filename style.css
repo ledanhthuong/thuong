@@ -1,0 +1,235 @@
+/* Thiết lập cơ bản & Font chữ */
+body {
+    font-family: 'Poppins', 'Roboto', sans-serif; /* Sử dụng font chữ hiện đại */
+    margin: 0;
+    /* Màu nền dự phòng nếu ảnh không tải được */
+    background-color: #8700e0;
+    /* Ảnh nền với overlay (để chữ vẫn dễ đọc) */
+    background-image: linear-gradient(rgba(3,10,22,0.55), rgba(3,10,22,0.55)), url("images/background.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Nếu muốn ảnh cố định khi cuộn: */
+    /* background-attachment: fixed; */
+    color: #c4cfde; /* Màu chữ sáng xám */
+    line-height: 1.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 1. HEADER & NAVIGATION */
+header {
+    background-color: #021c3d;
+    padding: 20px 0;
+    border-bottom: 1px solid #2d3034;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #c4cfde;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: #ff014f; /* Màu hồng nhấn mạnh */
+}
+
+.buy-button {
+    background-color: #ff014f; /* Màu hồng */
+    color: white;
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 1, 79, 0.3);
+}
+
+.buy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 1, 79, 0.5);
+}
+
+
+/* 2. HERO SECTION (NỘI DUNG CHÍNH) */
+.hero .hero-container {
+    display: grid;
+    /* Chia 2 cột: Cột trái 55%, Cột phải 45% */
+    grid-template-columns: 55% 45%; 
+    align-items: center;
+    min-height: calc(100vh - 85px); /* Chiều cao màn hình trừ đi header */
+    padding: 40px 0;
+}
+
+/* 2.1 Cột nội dung bên trái */
+.hero-content {
+    padding-right: 40px;
+}
+
+.welcome-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4cfde;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem; /* Cỡ chữ lớn */
+    color: white;
+    margin: 15px 0;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-content h1 .highlight {
+    color: #ff014f; /* Màu hồng nhấn mạnh */
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+/* 2.2 Footer của cột trái (Social & Skills) */
+.hero-footer {
+    display: flex;
+    gap: 50px; /* Khoảng cách giữa 2 nhóm */
+}
+
+.social-links h4,
+.skill-links h4 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.icons a {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-color: #113b80; /* Nền icon */
+    color: #c4cfde;
+    text-align: center;
+    line-height: 45px;
+    font-size: 1rem;
+    border-radius: 6px;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+.icons a:hover {
+    background-color: #ff014f; /* Đổi màu khi hover */
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* 2.3 Cột ảnh bên phải */
+.hero-image {
+    text-align: right;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    /* Tùy chọn: Thêm đổ bóng cho ảnh nếu muốn */
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); */
+    border-radius: 8px; /* Bo góc ảnh nhẹ */
+}
+
+
+/* 3. RESPONSIVE (CHO ĐIỆN THOẠI) */
+@media (max-width: 992px) {
+    /* Ẩn bớt menu trên máy tính bảng */
+    nav li:not(:first-child) {
+        display: none; 
+    }
+    .buy-button {
+        display: none; /* Ẩn nút Buy Now */
+    }
+    
+    .hero .hero-container {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+        text-align: center;
+    }
+
+    .hero-image {
+        order: -1; /* Đưa ảnh lên trên */
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .hero-image img {
+        max-width: 70%;
+    }
+
+    .hero-content {
+        padding-right: 0;
+    }
+    
+    .hero-footer {
+        flex-direction: column; /* Xếp chồng 2 nhóm icon */
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .social-links, .skill-links {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2.5rem; /* Giảm cỡ chữ h1 cho điện thoại nhỏ */
+    }
+    
+    .hero-image img {
+        max-width: 90%;
+    }
+}
